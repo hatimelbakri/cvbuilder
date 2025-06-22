@@ -25,9 +25,6 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="#"> Home </a>
                               </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="#">About</a>
-                              </li>
                               @auth
                               <li class="nav-item">
                                  <a class="nav-link" href="{{route('usercv')}}">CV Panel</a>
@@ -43,6 +40,9 @@
                               @else
                               <li class="nav-item">
                                  <a class="nav-link" href="{{route('login')}}">Log in</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="{{route('register')}}">Register</a>
                               </li>
                               @endauth
                            </ul>
@@ -61,9 +61,7 @@
                   <div class="col-md-6">
                      <div class="text-bg">
                         <h1>Create your Cv</h1>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a
-                           page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-                           normal distribution of letters,</p>
+                        <p>Welcome to your first step toward career success. Our powerful and intuitive CV builder helps you create a standout résumé tailored to your goals. Whether you're a student, a recent graduate, or a seasoned professional, you can design a visually polished CV in just minutes — no technical skills needed. Start now and turn opportunities into offers.</p>
                         @auth
                            <a href="{{route('usercv')}}">Start Now</a>
                         @else

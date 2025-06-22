@@ -9,7 +9,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <!-- site metas -->
-   <title>diigo</title>
+   <title>CV Builder</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -52,7 +52,7 @@
 
    <!-- end Testimonial -->
    <!-- contact -->
-   <div id="contact" class="contact">
+   <!-- <div id="contact" class="contact">
       <div class="container">
          <div class="row">
             <div class="col-md-12">
@@ -88,7 +88,7 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
    <!-- end contact -->
    <!--  footer -->
    @include('include.footer')

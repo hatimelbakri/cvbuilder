@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
-  <title>Tiny Dashboard - A Bootstrap Dashboard Template</title>
+  <title>CV Builder - Dashboard Template</title>
   <!-- Simple bar CSS -->
   <link rel="stylesheet" href="{{asset('backend/css/simplebar.css')}}">
   <!-- Fonts CSS -->
@@ -27,6 +27,24 @@
   <!-- App CSS -->
   <link rel="stylesheet" href="{{asset('backend/css/app-light.css')}}" id="lightTheme">
   <link rel="stylesheet" href="{{asset('backend/css/app-dark.css')}}" id="darkTheme" disabled>
+  <link rel="stylesheet" href="{{asset('backend/css/dataTables.bootstrap4.css')}}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+
+  <!-- skills -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script src=" https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+    <style>
+        .label-info {
+            background-color: blue;
+            padding: 1px;
+            border-radius: 4px;
+
+        }
+    </style>
 </head>
 
 <body class="vertical  light  ">
@@ -73,6 +91,107 @@
   <script src="{{asset('backend/js/dropzone.min.js')}}"></script>
   <script src="{{asset('backend/js/uppy.min.js')}}"></script>
   <script src="{{asset('backend/js/quill.min.js')}}"></script>
+  <script src="{{asset('backend/js/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('backend/js/dataTables.bootstrap4.min.js')}}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    $(function(){
+      $(document).on('click','#delete_education',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "Want to Delete This education?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = link
+            Swal.fire(
+              'Deleted!',
+              'Your education has been deleted.',
+              'success'
+            )
+          }
+        })
+      });
+    });
+    $(function(){
+      $(document).on('click','#delete_experience',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "Want to Delete This experience?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = link
+            Swal.fire(
+              'Deleted!',
+              'Your experience has been deleted.',
+              'success'
+            )
+          }
+        })
+      });
+    });
+    $(function(){
+      $(document).on('click','#delete_project',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "Want to Delete That project?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = link
+            Swal.fire(
+              'Deleted!',
+              'Your project has been deleted.',
+              'success'
+            )
+          }
+        })
+      });
+    });
+  </script>
+  <script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch(type){
+        case 'info':
+        toastr.info(" {{ Session::get('message') }} ");
+        break;
+
+        case 'success':
+        toastr.success(" {{ Session::get('message') }} ");
+        break;
+
+        case 'warning':
+        toastr.warning(" {{ Session::get('message') }} ");
+        break;
+
+        case 'error':
+        toastr.error(" {{ Session::get('message') }} ");
+        break; 
+    }
+    @endif 
+  </script>
+
   <script>
     $('.select2').select2(
       {
