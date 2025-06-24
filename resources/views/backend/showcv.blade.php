@@ -305,13 +305,88 @@
 
 <body class="vertical  light  ">
   <div class="wrapper">
-    @include('backend.include.header')
-    <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
-      <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
-        <i class="fe fe-x"><span class="sr-only"></span></i>
-      </a>
-    @include('backend.include.sidebar')
-    </aside>
+    <nav class="topnav navbar navbar-light">
+        <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+        </button>
+        <form class="form-inline mr-auto text-muted">
+        </form>
+        <ul class="nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="avatar avatar-sm mt-2">
+                <img src="{{asset('backend/assets/avatars/face-1.jpg')}}" alt="..." class="avatar-img rounded-circle">
+              </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="dropdown-item">Log out</button>
+                </form>
+            </div>
+
+          </li>
+        </ul>
+      </nav>
+      <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+        <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
+          <i class="fe fe-x"><span class="sr-only"></span></i>
+        </a>
+        <nav class="vertnav navbar navbar-light">
+          <!-- nav bar -->
+          <div class="w-100 mb-4 d-flex">
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+              <img src="{{asset('frontend/images/sidebar.png')}}" alt="#" />
+            </a>
+          </div>
+          @auth
+            @if(Auth::user()->role === 'admin')
+              <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item">
+                  <a href="{{ route('admin') }}" class="nav-link">
+                    <i class="fe fe-home fe-16"></i>
+                    <span class="ml-3 item-text">Dashboard</span>
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+              </ul>
+              <p class="text-muted nav-heading mt-4 mb-1">
+                <span>Apps</span>
+              </p>
+              <ul class="navbar-nav flex-fill w-100 mb-2">
+
+                <li class="nav-item dropdown">
+                  <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="fe fe-book fe-16"></i>
+                    <span class="ml-3 item-text">Messages</span>
+                  </a>
+                  <ul class="collapse list-unstyled pl-4 w-100" id="contact">
+                    <a class="nav-link pl-3" href="{{route('listMessage')}}"><span class="ml-1">Messages List</span></a>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item">
+                  <a href="{{ route('listCVAdmin') }}" class="nav-link">
+                    <i class="fe fe-book fe-16"></i>
+                    <span class="ml-3 item-text">list cv</span>
+                  </a>
+                </li>
+              </ul>
+            @endif               
+            @if(Auth::user()->role === 'user')
+              <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item">
+                  <a href="{{ route('listCV') }}" class="nav-link">
+                    <i class="fe fe-book fe-16"></i>
+                    <span class="ml-3 item-text">list cv</span>
+                  </a>
+                </li>
+              </ul>
+            @endif
+          @endauth
+        </nav>
+      </aside>
     <main role="main" class="main-content">
         <div class="container-fluid">
             <div class="row justify-content-center">

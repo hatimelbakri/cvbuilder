@@ -4,6 +4,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12">
+        @if($latestCv && $languages->first()?->cv_id == $latestCv->id)
         <div class="row">
           <div class="col-md-8">
             <div class="card shadow mb-4">
@@ -64,12 +65,21 @@
                   </div>
 
                   <button type="submit" class="btn btn-primary float-end">Update</button>
+                  
+                  <a href="{{ route('user.language') }}" class="btn btn-link">Insert More Language</a>
                 </form>
               </div>
 
             </div>
           </div>
         </div>
+        @else
+        {{-- If no CV exists --}}
+        <div class="alert alert-warning text-center">
+          <h4>No CV found</h4>
+          <p>Please <a href="{{ route('user.language') }}">insert language</a> to create your CV.</p>
+        </div>
+        @endif
       </div>
     </div>
   </div>

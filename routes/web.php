@@ -5,7 +5,10 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\backend\backendController;
 use App\Http\Controllers\frontend\frontendController;
 use App\Http\Controllers\ProfileController;
+use App\Models\cv;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,9 +16,9 @@ Route::get('/', function () {
 Route::get('/', [frontendController::class, 'index']);
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 Route::get('/user/cv', [backendController::class, 'Usercv'])->name('usercv');
 
@@ -25,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     Route::controller(backendController::class)->group(function () {
+        Route::get('user/edit', 'editUser')->name('editUser');
+        Route::post('user/update', 'updateUser')->name('updateUser');
         Route::get('/user/cv', 'Usercv')->name('usercv');
         Route::post('/user/logout', [AuthenticatedSessionController::class, 'userLogout'])->name('user.logout');
         
@@ -92,6 +97,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/user/downloadcv', 'downloadCv')->name('user.downloadcv');
 
         Route::get('SendEmail', 'SendEmail')->name('SendEmail');
+        Route::get('user/contact','userContact')->name('user.contact');
+        Route::post('user/message','sendMessage')->name('sendMessage');
+        Route::get('/list/message', 'listMessage')->name('listMessage');
+        Route::get('/show/message/{id}', 'showMessage')->name('showMessage');
+
+        Route::get('listCV', [BackendController::class, 'listCV'])->name('listCV');
+        Route::get('/admin', [BackendController::class, 'admin'])->name('admin');
+        Route::get('listCVAdmin', [BackendController::class, 'listCVAdmin'])->name('listCVAdmin');
+        Route::get('show/cv/{id}', [BackendController::class, 'showcv'])->name('show.cv');
+        Route::get('/list/cv/{id}', 'deleteCV')->name('delete.cv');
     });
 });
 

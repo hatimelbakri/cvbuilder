@@ -4,6 +4,7 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
+            @if($latestCv && $projects->first()?->cv_id == $latestCv->id)
             <h2 class="mb-2 page-title">Table Projects Details</h2>
             <div class="row my-4">
               <!-- Small table -->
@@ -66,6 +67,13 @@
                 </div>
               </div> <!-- simple table -->
             </div> <!-- end section -->
+                    @else
+        {{-- If no CV exists --}}
+        <div class="alert alert-warning text-center">
+          <h4>No CV found</h4>
+          <p>Please <a href="{{ route('user.project') }}">insert project</a> to create your CV.</p>
+        </div>
+        @endif
           </div> <!-- .col-12 -->
         </div> <!-- .row -->
       </div> <!-- .container-fluid -->

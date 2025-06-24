@@ -45,7 +45,7 @@
                   <br>
                   <br>
                   <div class="d-flex justify-content-end">
-                    <a class="btn btn-danger" href="{{route('user.project')}}">Add project</a>
+                    <a class="button btn btn-danger" href="{{route('user.project')}}">Add project</a>
                   </div>
                 </form>
               </div>

@@ -6,21 +6,24 @@
       <div class="col-12">
         <div class="row">
           <div class="col-md-12">
-            @if($cv && $cv->id)
-
             <div class="card shadow mb-4">
               <div class="card-header">
-                <strong class="card-title">Edit Name CV</strong>
+                <strong class="card-title">Edit User</strong>
               </div>
               <div class="card-body">
-                <form class="needs-validation" method="POSt" action="{{route('update.template')}}" novalidate>
+                <form class="needs-validation" method="POSt" action="{{route('updateUser')}}" novalidate>
                   @csrf
-                  <input type="hidden" name="id" value="{{$cv->id}}">
+                  <input type="hidden" name="id" value="{{$user->id}}">
 
                   <div class="form-group mb-3">
-                    <label for="address-wpalaceholder">Name CV</label>
-                    <input type="text" value="{{$cv->name}}" name="name" id="address-wpalaceholder" class="form-control"
+                    <label for="address-wpalaceholder">Name</label>
+                    <input type="text" value="{{$user->name}}" name="name" id="address-wpalaceholder" class="form-control"
                       placeholder="Enter your Name">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="address-wpalaceholder">email</label>
+                    <input type="text" value="{{$user->email}}" name="name" id="address-wpalaceholder" class="form-control"
+                      disabled>
                   </div>
                   <button class="btn btn-primary" type="submit">Update</button>
                 </form>
@@ -28,13 +31,6 @@
             </div> <!-- /.card -->
           </div> <!-- /.col -->
         </div> <!-- end section -->
-                @else
-        {{-- If no CV exists --}}
-        <div class="alert alert-warning text-center">
-          <h4>No CV found</h4>
-          <p>Please <a href="{{ route('usercv') }}">insert Template</a> to create your CV.</p>
-        </div>
-        @endif
       </div> <!-- /.col-12 col-lg-10 col-xl-10 -->
     </div> <!-- .row -->
   </div> <!-- .container-fluid -->

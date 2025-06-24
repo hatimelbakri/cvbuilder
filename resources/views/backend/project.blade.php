@@ -28,7 +28,7 @@
                   </div>
                   <button class="btn btn-primary" type="submit">Save</button>
                   <div class="d-flex justify-content-end">
-                    <a class="btn btn-danger" href="{{route('user.showcv')}}">Show the CV</a>
+                    <a class="button btn btn-danger" href="{{route('user.showcv')}}">Show the CV</a>
                   </div>
                 </form>
               </div> <!-- /.card-body -->

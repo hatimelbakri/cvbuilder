@@ -14,25 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('role')->default('user'); // Default role set to 'user'
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
-
-        // Schema::create('users', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('firstname');
-        //     $table->string('lastname');
-        //     $table->string('email')->unique();
-        //     $table->string('password');
-        //     $table->json('roles');
-        //     $table->boolean('is_verified')->default(false);
-        //     $table->unsignedBigInteger('customer_id')->nullable();
-        //     $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-        //     $table->timestamps();
-        // });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();

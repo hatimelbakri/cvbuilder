@@ -26,10 +26,14 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        // Get authenticated user
+        $user = Auth::user();
+
         $request->session()->regenerate();
 
-        return redirect()->intended(route('usercv', absolute: false));
+        return redirect('/');
     }
+
 
     /**
      * Destroy an authenticated session.

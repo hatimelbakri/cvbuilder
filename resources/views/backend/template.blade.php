@@ -20,7 +20,7 @@
                   </div>
                   <button class="btn btn-primary" type="submit">Save</button>
                   <div class="d-flex justify-content-end">
-                    <a class="btn btn-danger" href="{{route('user.image')}}">Upload Image Profile</a>
+                    <a class="button btn btn-sanger" href="{{route('user.info')}}">Add Persenal Information</a>
                   </div>
                 </form>
               </div> <!-- /.card-body -->

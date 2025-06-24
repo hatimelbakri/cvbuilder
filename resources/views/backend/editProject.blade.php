@@ -41,6 +41,8 @@
                       <textarea class="form-control" name="description" id="example-textarea" rows="4">{{$project->description}}</textarea>
                   </div>
                   <button class="btn btn-primary" type="submit">update</button>
+                  
+                  <a href="{{ route('user.project') }}" class="btn btn-link">Insert More Projects</a>
                 </form>
               </div> <!-- /.card-body -->
             </div> <!-- /.card -->

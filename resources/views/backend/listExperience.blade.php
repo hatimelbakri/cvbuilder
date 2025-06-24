@@ -4,6 +4,7 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
+            @if($latestCv && $experiences->first()?->cv_id == $latestCv->id)
             <h2 class="mb-2 page-title">List Experience Details</h2>
             <div class="row my-4">
               <!-- Small table -->
@@ -59,9 +60,18 @@
                 </div>
               </div> <!-- simple table -->
             </div> <!-- end section -->
+            @else
+            {{-- If no CV exists --}}
+            <div class="alert alert-warning text-center">
+              <h4>No CV found</h4>
+              <p>Please <a href="{{ route('user.experience') }}">insert experience</a> to create your CV.</p>
+            </div>
+            @endif
           </div> <!-- .col-12 -->
         </div> <!-- .row -->
       </div> <!-- .container-fluid -->
+      
+                  <a href="{{ route('user.experience') }}" class="btn btn-link">Insert More Experience</a>
       <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">

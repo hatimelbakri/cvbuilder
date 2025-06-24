@@ -44,7 +44,7 @@
                   </div>
                   <button class="btn btn-primary" type="submit">Save</button>
                   <div class="d-flex justify-content-end">
-                    <a class="btn btn-danger" href="{{route('user.experience')}}">Add Experience</a>
+                    <a class="button btn btn-danger" href="{{route('user.experience')}}">Add Experience</a>
                   </div>
                 </form>
               </div> <!-- /.card-body -->

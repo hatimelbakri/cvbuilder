@@ -4,6 +4,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12">
+        @if($cvId && $info && $info->cv_id == $cvId)
         <div class="row">
           <div class="col-md-8">
             <div class="card shadow mb-4">
@@ -33,6 +34,13 @@
             </div> <!-- /.card -->
           </div> <!-- /.col -->
         </div> <!-- end section -->
+        @else
+        {{-- If no CV exists --}}
+        <div class="alert alert-warning text-center">
+          <h4>No CV found</h4>
+          <p>Please <a href="{{ route('user.image') }}">Upload Image</a> to create your CV.</p>
+        </div>
+        @endif
       </div> <!-- /.col-12 col-lg-10 col-xl-10 -->
     </div> <!-- .row -->
   </div> <!-- .container-fluid -->

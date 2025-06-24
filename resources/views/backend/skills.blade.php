@@ -34,7 +34,7 @@
                   <br>
                 
                   <div class="d-flex justify-content-end">
-                    <a class="btn btn-danger" href="{{route('user.language')}}">Add Language</a>
+                    <a class="button btn btn-danger" href="{{route('user.language')}}">Add Language</a>
                   </div>
                 </form>
               </div>

@@ -42,7 +42,6 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'email_verified_at' => Carbon::now(),
         ]);
         
         // Send welcome email
@@ -52,6 +51,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('usercv', absolute: false));
+        return redirect('/');
     }
 }
